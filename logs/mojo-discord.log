@@ -1,5 +1,0 @@
-[2026-10-25 16:00:18.13360] [389067] [info] [Discord.pm] [init] New session beginning Sun Oct 25 16:00:18 2026
-[2026-10-25 16:00:18.45118] [389067] [info] [Gateway.pm] [gw_connect] WebSocket Connection Established
-[2026-10-25 16:00:18.64002] [389067] [info] [Gateway.pm] [on_finish] Websocket connection closed with Code $code = 4004;
- (Authentication failed.)
-[2026-10-25 16:00:18.64053] [389067] [info] [Gateway.pm] [reconnect] Reconnecting and resuming previous session.
