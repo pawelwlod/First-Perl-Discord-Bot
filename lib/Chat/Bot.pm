@@ -51,22 +51,25 @@ sub start
         # Extract some information from the payload that we care about
         # See the Discord API docs for full payload structures,
         # or use Data::Dumper to print the structure of $hash to the screen and look at it yourself.
-        my $msg = $hash->{'content'};
+        my $msg        = $hash->{'content'};
         my $channel_id = $hash->{'channel_id'};
-        my $author_id = $hash->{'author'}{'id'};
+        my $author_id  = $hash->{'author'}{'id'};
         my $message_id = $hash->{'id'};
 
         # Print the discord user's ID and the message content
         say localtime(time) . ' ' . $author_id . "\t" . $msg;
 
         # If the message is "ping" reply with "pong"
-        $self->discord->send_message($channel_id, 'pong') if ( lc $msg eq 'ping' );
+        $self->discord->send_message($channel_id, 'pong') 
+            if ( lc $msg eq 'ping' );
 
         # If the message is "foo" reply via DM with "bar"
-        $self->discord->send_dm($author_id, 'bar') if ( lc $msg eq 'foo' );
+        $self->discord->send_dm($author_id, 'bar') 
+            if ( lc $msg eq 'foo' );
         
         # If the message is "test", acknowledge the message and reply via DM with "success!"
-        $self->discord->send_ack_dm($channel_id, $message_id, $author_id, 'success!') if ( lc $msg eq 'test' );
+        $self->discord->send_ack_dm($channel_id, $message_id, $author_id, 'success!') 
+            if ( lc $msg eq 'test' );
     });
 
     # Start the connection
@@ -76,7 +79,8 @@ sub start
     # This allows the application to go into a non-blocking wait loop
     # where future actions will be drive by the events emitted by Discord.
     # Nothing below this line will execute until the IOLoop stops (which for most bots is never).
-    Mojo::IOLoop->start unless Mojo::IOLoop->is_running;
+    Mojo::IOLoop->start 
+        unless Mojo::IOLoop->is_running;
 }
 
 1;
